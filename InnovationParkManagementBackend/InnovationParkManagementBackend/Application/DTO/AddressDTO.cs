@@ -3,11 +3,11 @@
     public class AddressDTO
     {
         public string? Cep { get; set; }
-        public string? Rua { get; set; }
-        public int Numero { get; set; }
-        public string? Bairro { get; set; }
-        public string? Cidade { get; set; }
-        public string? Estado { get; set; }
+        public string? Street { get; set; }
+        public int Number { get; set; }
+        public string? Neighborhood { get; set; }
+        public string? City { get; set; }
+        public string? State { get; set; }
         public string? Uf {  get; set; }
     }
 }
