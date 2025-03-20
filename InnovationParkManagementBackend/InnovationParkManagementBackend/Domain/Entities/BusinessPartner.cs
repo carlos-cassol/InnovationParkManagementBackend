@@ -6,6 +6,7 @@ namespace InnovationParkManagementBackend.Domain.Entities
     public class BusinessPartner
     {
         
+        public Guid Id { get; set; }
         public Guid IdCompany { get; set; }
         [Required]
         public string? Name { get; set; }
