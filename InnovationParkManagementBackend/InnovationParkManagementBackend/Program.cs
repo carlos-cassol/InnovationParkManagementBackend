@@ -1,3 +1,4 @@
+using InnovationParkManagementBackend.Application.AutoMapper;
 using InnovationParkManagementBackend.Application.DTO;
 using InnovationParkManagementBackend.Infrastructure.Context;
 using InnovationParkManagementBackend.Infrastructure.Repository;
@@ -16,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBusinessPartnerRepository, BusinessPartnerRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddAutoMapper(typeof(BusinessPartnerDTO));
+builder.Services.AddAutoMapper(typeof(ProfileDTO));
 
 
 var app = builder.Build();
