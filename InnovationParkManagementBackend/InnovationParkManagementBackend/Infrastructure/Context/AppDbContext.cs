@@ -8,5 +8,6 @@ namespace InnovationParkManagementBackend.Infrastructure.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base (options) { }
 
         public DbSet<BusinessPartner> BusinessPartner { get; set; }
+        public DbSet<Company> Company { get; set; }
     }
 }

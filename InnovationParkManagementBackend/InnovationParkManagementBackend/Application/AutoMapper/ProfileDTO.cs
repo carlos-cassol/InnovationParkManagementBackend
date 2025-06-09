@@ -9,6 +9,8 @@ namespace InnovationParkManagementBackend.Application.AutoMapper
         public ProfileDTO()
         {
             CreateMap<BusinessPartner, BusinessPartnerDTO>().ReverseMap();
+            CreateMap<BusinessPartnerAddress, BusinessPartnerAddressDTO>().ReverseMap();
+            CreateMap<Company, CompanyDTO>().ReverseMap();
         }
     }
 }

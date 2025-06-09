@@ -5,6 +5,8 @@ namespace InnovationParkManagementBackend.Infrastructure.Repository.UnifOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private IBusinessPartnerRepository _repository;
+        private ICompanyRepository _companyRepository;
+
         public AppDbContext? _context;
 
         public UnitOfWork(AppDbContext? context)
@@ -14,7 +16,12 @@ namespace InnovationParkManagementBackend.Infrastructure.Repository.UnifOfWork
 
         public IBusinessPartnerRepository BusinessPartnerRepository
         {
-            get { return _repository = _repository ?? new BusinessPartnerRepository(_context) ;}
+            get { return _repository = _repository ?? new BusinessPartnerRepository(_context);}
+        }
+
+        public ICompanyRepository CompanyRepository
+        {
+            get { return _companyRepository = _companyRepository ?? new CompanyRepository(_context);}
         }
 
         public void Commit()

@@ -7,16 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InnovationParkManagementBackend.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class BusinessPartnerController : ControllerBase
     {
         private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
-        public IUnitOfWork Get_unit()
+        private IUnitOfWork Get_unit()
         {
             return _unit;
         }
+
+        public BusinessPartnerController(IUnitOfWork unit, IMapper mapper)
+        {
+            _unit = unit;
+            _mapper = mapper;
+        }
+
 
         [HttpGet("ListAll")]
         public async Task<ActionResult<IEnumerable<BusinessPartnerDTO>>> GetAll()
@@ -26,11 +33,10 @@ namespace InnovationParkManagementBackend.API.Controllers
             if (partners == null)
                 throw new Exception("Não há sócios cadastrados");
 
-            var listPartners = _mapper.Map<BusinessPartnerDTO>(partners);
+            var listPartners = _mapper.Map<IEnumerable<BusinessPartnerDTO>>(partners);
             return Ok(listPartners);
         }
-
-        [HttpGet("Find")]
+        [HttpGet("Find/{id}")]
         public async Task<ActionResult<BusinessPartnerDTO>> Get(Guid id)
         {
             var partner = _unit.BusinessPartnerRepository.Get(p => p.Id == id);
@@ -45,7 +51,7 @@ namespace InnovationParkManagementBackend.API.Controllers
             _unit.BusinessPartnerRepository.Update(partner);
             _unit.Commit();
             var partnerDTO = _mapper.Map<BusinessPartnerDTO>(partner);
-            return Ok(partner);
+            return Ok(partnerDTO);
         }
 
     }
