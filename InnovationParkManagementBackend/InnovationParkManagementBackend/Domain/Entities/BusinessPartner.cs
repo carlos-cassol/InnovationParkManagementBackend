@@ -10,12 +10,11 @@ namespace InnovationParkManagementBackend.Domain.Entities
         public Guid IdCompany { get; set; }
         [Required]
         public string? Name { get; set; }
-        public AddressDTO?  AddressPartner { get; set;}
         [Required]
         public string? Cpf {  get; set;}
         [Phone]
         public string? PhoneNumber { get; set;}
         [EmailAddress]
-        public string? Email { get; set;}
+        public string? Mail { get; set;}
     }
 }
