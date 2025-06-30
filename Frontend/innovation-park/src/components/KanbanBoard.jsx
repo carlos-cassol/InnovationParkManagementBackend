@@ -32,6 +32,8 @@ import { SortableContext, verticalListSortingStrategy, horizontalListSortingStra
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { getClients, createCard, updateCard, moveCardWithIndex, reorderColumn, convertIncubationPlanFromBackend } from '../services/api';
+import { HiUpload } from "react-icons/hi";
+
 
 // Componente Card Sortable simplificado
 const SortableCard = ({ card, onClick, onEdit, onDelete }) => {
@@ -435,10 +437,30 @@ const CardModal = ({ isOpen, onClose, card, columnId, onSave }) => {
               />
             </FormControl>
 
+          <FormControl>
+          <FormLabel>Importação de Comprovantes e Arquivos</FormLabel>
+              <label>
+                <input
+                  type="file"
+                  multiple
+                  hidden
+                  onChange={(e) => {
+                    const files = e.target.files;
+                    console.log("Arquivos selecionados:", files);
+                }}
+              />
+              <Button as="span" variant="outline" size="sm">
+                <HiUpload style={{ marginRight: "4px" }}/> Selecionar Arquivo
+              </Button>
+            </label>
+          </FormControl>
+
             <FormControl display="flex" alignItems="center">
               <FormLabel mb="0">Pago?</FormLabel>
               <Switch isChecked={isPaid} onChange={e => setIsPaid(e.target.checked)} />
             </FormControl>
+
+
           </VStack>
         </ModalBody>
         <ModalFooter>
@@ -660,4 +682,4 @@ const KanbanBoard = ({ workArea, onRefresh }) => {
   );
 };
 
-export default KanbanBoard; 
+export default KanbanBoard;
